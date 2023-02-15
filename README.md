@@ -4,7 +4,7 @@ I need to make a table with multiple row selection. And with the possibility of 
 To do this, I use the PrimeFaces 12 framework and Datatable with multiple row selection and with row expand.
 
 There was a problem with multiple row selection in the table.
-The Alt meta key does not work.
+The Shift meta key does not work.
 When the selected row is clicked, it remains selected.
 
 In the disclosed table, the situation is the same.
