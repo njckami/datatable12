@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+    <h:head>
+        <h:outputScript name="jquery/jquery.js" library="primefaces"/>
+        <h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+        <h:outputScript name="locales/locale-#{app.locale.language}.js" library="primefaces"/>
+    </h:head>
+    <h:body>
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true">
+            <p:autoUpdate/>
+        </p:growl>
+
+        <h:form id="form">
+            <div class="card">
+                <p:dataTable id="tbl1" var="aa" value="#{tblSrc.mainList}" rowKey="#{aa.id}"
+                             selectionMode="multiply" selection="#{tblSrc.selectedMainRows}"
+                             expandedRow="false" rowExpandMode="single"
+                >
+                    <p:ajax event="rowSelect" listener="#{tblSrc.onRowSelect}" update="tbl1 :msgs"/>
+                    <p:ajax event="rowUnselect" listener="#{tblSrc.onRowUnselect}" update="tbl1 :msgs"/>
+                    <p:column style="width:2rem">
+                        <p:rowToggler/>
+                    </p:column>
+                    <p:column headerText="col0">
+                        <h:outputText value="#{aa.id}"/>
+                    </p:column>
+                    <p:column headerText="col1">
+                        <h:outputText value="#{aa.str}"/>
+                    </p:column>
+                    <p:rowExpansion>
+                        <p:dataTable id="tbl2" var="bb" value="#{tblSrc.getSubRows(aa)}" rowKey="#{bb.id}"
+                                     selectionMode="multiply" selection="#{tblSrc.selectedSubRows}">
+                            <p:ajax event="rowSelect" listener="#{tblSrc.onRowSelect}" update="tbl2"/>
+                            <p:ajax event="rowUnselect" listener="#{tblSrc.onRowUnselect}" update="tbl2"/>
+                            <p:column headerText="subCol_id">
+                                <h:outputText value="#{bb.id}"/>
+                            </p:column>
+                            <p:column headerText="subCol_str">
+                                <h:outputText value="#{bb.str}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:rowExpansion>
+                </p:dataTable>
+            </div>
+        </h:form>
+    </h:body>
+</f:view>
+
+</html>
