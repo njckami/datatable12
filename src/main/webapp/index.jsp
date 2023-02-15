@@ -4,6 +4,7 @@
 <head>
     <title>JSP - Hello World</title>
 </head>
+<h1>Hello World</h1>
 <body>
 <a href="tableTest.xhtml">Table Multiply Selection Test</a>
 
