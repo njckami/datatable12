@@ -16,4 +16,4 @@ When a row is selected in the expanded page, the selection event is also transmi
 Linux Fedora 37,
 OpenJDK 17.0.6,
 GlassFish 7.0.1,
-PrimeFaces 12
+PrimeFaces 12, JSF 4.0
