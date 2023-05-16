@@ -18,7 +18,7 @@
         <h:form id="form">
             <div class="card">
                 <p:dataTable id="tbl1" var="aa" value="#{tblSrc.mainList}" rowKey="#{aa.id}"
-                             selectionMode="multiply" selection="#{tblSrc.selectedMainRows}"
+                             selection="#{tblSrc.selectedMainRows}"
                              expandedRow="false" rowExpandMode="single"
                 >
                     <p:ajax event="rowSelect" listener="#{tblSrc.onRowSelect}" update="tbl1 :msgs"/>
@@ -34,9 +34,7 @@
                     </p:column>
                     <p:rowExpansion>
                         <p:dataTable id="tbl2" var="bb" value="#{tblSrc.getSubRows(aa)}" rowKey="#{bb.id}"
-                                     selectionMode="multiply" selection="#{tblSrc.selectedSubRows}">
-                            <p:ajax event="rowSelect" listener="#{tblSrc.onRowSelect}" update="tbl2"/>
-                            <p:ajax event="rowUnselect" listener="#{tblSrc.onRowUnselect}" update="tbl2"/>
+                                     selection="#{tblSrc.selectedSubRows}">
                             <p:column headerText="subCol_id">
                                 <h:outputText value="#{bb.id}"/>
                             </p:column>
